@@ -20,6 +20,7 @@ init() {
 }
 
 tests() {
+    docker-compose up -d
     ops=''
     while getopts fu option; do
         case "$option" in
