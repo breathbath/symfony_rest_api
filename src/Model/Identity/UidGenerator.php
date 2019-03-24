@@ -16,6 +16,6 @@ class UidGenerator
             throw new \InvalidArgumentException('Empty email value');
         }
 
-        return sprintf('%d:%d', crc32($email), crc32($time->format(\DateTime::ISO8601)));
+        return sprintf('%d:%d', crc32($email), crc32($time->format('YmdHis')));
     }
 }
