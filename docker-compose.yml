@@ -1,0 +1,33 @@
+version: '3'
+services:
+    apache:
+        build: .docker/apache
+        container_name: test_apache
+        ports:
+          - 81:80
+        volumes:
+          - .docker/config/vhosts:/etc/apache2/sites-enabled
+          - .:/home/wwwroot/test
+        depends_on:
+          - php
+    mysql:
+        image: mysql
+        command: "--default-authentication-plugin=mysql_native_password"
+        container_name: test_mysql
+        volumes:
+            - .docker/data/db:/var/lib/mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: test
+            MYSQL_USER: admin
+            MYSQL_PASSWORD: admin
+
+    php:
+        build: .docker/php
+        container_name: test_php
+        volumes:
+          - .:/home/wwwroot/test
+          - .env:/home/wwwroot/test/.env
+        depends_on:
+          - mysql
+        working_dir: /home/wwwroot/test
