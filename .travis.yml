@@ -1,6 +1,14 @@
 # Project language
 language: php
 
+addons:
+  apt:
+    sources:
+    - mysql-5.7-trusty
+    packages:
+    - mysql-server
+    - mysql-client
+
 # Allows use container-based infrastructure
 sudo: false
 
@@ -22,14 +30,17 @@ matrix:
 
 # Update composer
 before-install:
+  - sudo mysql -e "use mysql; update user set authentication_string=PASSWORD('root') where User='root'; update user set plugin='mysql_native_password';FLUSH PRIVILEGES;"
+  - sudo mysql_upgrade -u root -proot
+  - sudo service mysql restart
   - composer self-update
 
 install:
   - composer install
   - cp .env.test .env
-  - echo 'DATABASE_URL=mysql://travis:@127.0.0.1:3306/test_db' >> .env
+  - echo 'DATABASE_URL=mysql://root:root@127.0.0.1:3306/test' >> .env
   - php bin/console doctrine:database:create --env=test
   - php bin/console doctrine:migrations:migrate -n
 
 script:
-  - php bin/phpunit
+  - php bin/phpunit -c phpunit.xl.travis
