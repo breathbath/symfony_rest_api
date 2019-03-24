@@ -27,7 +27,7 @@ services:
         container_name: test_php
         volumes:
           - .:/home/wwwroot/test
-          - ./env.dc:/home/wwwroot/test/.env
+          - ./.env.docker:/home/wwwroot/test/.env
         depends_on:
           - mysql
         working_dir: /home/wwwroot/test

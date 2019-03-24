@@ -16,20 +16,20 @@ actions:
 init() {
     docker-compose up -d
     docker-compose exec php composer install
-    docker-compose exec php bin/console doctrine:migrations:migrate
+    docker-compose exec php bin/console doctrine:migrations:migrate -n
 }
 
 tests() {
-    while getopts d option; do
+    ops=''
+    while getopts fu option; do
         case "$option" in
-            f) docker-compose exec php php bin/phpunit --group=functional
+            f) ops='--group=functional'
             ;;
-            u) docker-compose exec php php bin/phpunit --exclude-group=functional
-            ;;
-            *) docker-compose exec php php bin/phpunit
+            u) ops='--exclude-group=functional'
             ;;
         esac
     done
+    docker-compose exec php php bin/phpunit ${ops}
 }
 
 route() {
