@@ -1,24 +1,24 @@
-# Intro
+# Library description
 
 Current repository is created for demonstrating how to build RESTFull API with Symfony 4.2 framework. It contains minimal setup and an example for CRUD operations for an imaginary Customer entity.
 
-# Commands list
+## Commands list
 
-## Init the application
+### Init the application
 
 Please make sure you have docker and docker-compose installed on your machine before running it.
 
     ./start.sh init
 
-## Run tests
+### Run tests
     
     ./start.sh tests #run all tests
     ./start.sh tests -f #run functional tests   
     ./start.sh tests -u #run unit tests   
 
-# Api endpoints
+## Api endpoints
 
-## To create a customer:
+### To create a customer:
 
 **Method**: POST
 
@@ -33,20 +33,20 @@ Please make sure you have docker and docker-compose installed on your machine be
         	"birthday":"2009-01-03"
         }
 
-## To list customers:
+### To list customers:
 
 **Method**: GET
 
 **URL**: `http://localhost:81/v1/customers`
 
 
-## To list one customer:
+### To list one customer:
 
 **Method**: GET
 
 **URL**: `http://localhost:81/v1/customers/1`
 
-## To change a customer:
+### To change a customer:
 
 **Method**: PUT
 
@@ -61,13 +61,13 @@ Please make sure you have docker and docker-compose installed on your machine be
         	"birthday":"2009-01-03"
         }
 
-## To delete a customer:
+### To delete a customer:
 
 **Method**: DELETE
 
 **URL**: `http://localhost:81/v1/customers/1`
 
-## To read docs:
+### To read docs:
 
 **Method**: GET
 
