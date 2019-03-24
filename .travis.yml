@@ -40,4 +40,4 @@ install:
   - php bin/console doctrine:migrations:migrate -n
 
 script:
-  - php bin/phpunit -c phpunit.xl.travis
+  - php bin/phpunit -c phpunit.xml.travis
