@@ -6,11 +6,12 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use JMS\Serializer\Annotation\Type;
+use Swagger\Annotations as SWG;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="customer")
- * @UniqueEntity("email")
+ * @UniqueEntity(fields={"email"}, groups={"registration"})
  */
 class Customer
 {
@@ -49,6 +50,12 @@ class Customer
      * @Type("DateTime<'Y-m-d'>")
      */
     private $birthday;
+
+    /**
+     * @ORM\Column(type="string", length=100, unique=true)
+     * @SWG\Property(description="The unique identifier of the customer.")
+     */
+    private $uid;
 
     /**
      * @return int|null
@@ -128,5 +135,21 @@ class Customer
     public function setBirthday(?\DateTime $birthday): void
     {
         $this->birthday = $birthday;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getUid():?string
+    {
+        return $this->uid;
+    }
+
+    /**
+     * @param string $uid
+     */
+    public function setUid(string $uid): void
+    {
+        $this->uid = $uid;
     }
 }

@@ -3,15 +3,13 @@
 namespace App\Controller;
 
 use FOS\RestBundle\Controller\AbstractFOSRestController;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\HttpException;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use FOS\RestBundle\Controller\Annotations\Get;
 
 class DefaultController extends AbstractFOSRestController
 {
     /**
-     * @Route("/", name="default")
+     * @Get("/", name="default")
      */
     public function defaultAction()
     {
