@@ -23,7 +23,7 @@ Please make sure you have docker and docker-compose installed on your machine be
 
 **Method**: POST
 
-**URL**: `http://localhost:81/v1/customers/1`
+**URL**: `http://localhost:81/v1/customers`
 
 **BODY**:
 
