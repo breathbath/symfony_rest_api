@@ -7,7 +7,7 @@
         "ext-iconv": "*",
         "ext-json": "*",
         "friendsofsymfony/rest-bundle": "^2.5",
-        "jms/serializer-bundle": "^3.2",
+        "jms/serializer-bundle": "*",
         "nelmio/api-doc-bundle": "^3.4",
         "sensio/framework-extra-bundle": "^5.2",
         "symfony/console": "*",
@@ -15,6 +15,7 @@
         "symfony/form": "*",
         "symfony/framework-bundle": "*",
         "symfony/orm-pack": "^1.0",
+        "symfony/serializer": "4.1.*",
         "symfony/validator": "*",
         "symfony/yaml": "*"
     },
@@ -50,7 +51,7 @@
     },
     "scripts": {
         "auto-scripts": {
-            "cache:clear": "symfony-cmd",
+            "cache:clear": "symfony-cmd"
         },
         "post-install-cmd": [
             "@auto-scripts"

@@ -2,7 +2,7 @@
 
 namespace App\Tests\Form;
 
-use App\Entity\Customer;
+use App\Entity\ContactRequest;
 use App\Form\CustomerType;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -43,7 +43,7 @@ class CustomerTypeTest extends TestCase
 
         $optionResolverExpectation = $this->prophesize(OptionsResolver::class);
         $optionResolverExpectation->setDefaults([
-            'data_class' => Customer::class,
+            'data_class' => ContactRequest::class,
             'csrf_protection' => false,
             'validation_groups' => ['Default', 'registration'],
         ])->shouldBeCalled();

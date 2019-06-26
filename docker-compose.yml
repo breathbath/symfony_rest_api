@@ -9,7 +9,7 @@ services:
           - .docker/config/vhosts:/etc/apache2/sites-enabled
           - .:/home/wwwroot/test
         depends_on:
-          - php
+          - app
     mysql:
         image: mysql
         command: "--default-authentication-plugin=mysql_native_password"
@@ -22,9 +22,9 @@ services:
             MYSQL_USER: admin
             MYSQL_PASSWORD: admin
 
-    php:
-        build: .docker/php
-        container_name: test_php
+    app:
+        build: .docker/app
+        container_name: app
         volumes:
           - .:/home/wwwroot/test
           - .env:/home/wwwroot/test/.env
