@@ -15,8 +15,12 @@ actions:
 
 init() {
     docker-compose up -d
-    docker-compose exec php composer install
-    docker-compose exec php bin/console doctrine:migrations:migrate -n
+    docker-compose exec app composer install
+    docker-compose exec app php bin/console doctrine:migrations:migrate -n
+}
+
+cmd() {
+    docker-compose exec app php bin/console $@
 }
 
 tests() {
@@ -30,7 +34,7 @@ tests() {
             ;;
         esac
     done
-    docker-compose exec php php bin/phpunit ${ops}
+    docker-compose exec app php bin/phpunit ${ops}
 }
 
 route() {
@@ -45,6 +49,8 @@ route() {
         init) init
            ;;
         tests) tests ${@:2}
+           ;;
+        cmd) cmd ${@:2}
            ;;
         help|h) echo ${HELP}
            ;;

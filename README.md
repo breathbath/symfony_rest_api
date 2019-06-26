@@ -19,57 +19,37 @@ Please make sure you have docker and docker-compose installed on your machine be
 
 ## Api endpoints
 
-### To create a customer:
+### To create contact form request:
 
 **Method**: POST
 
-**URL**: `http://localhost:81/v1/customers`
+**URL**: `http://localhost:81/v1/contact-requests`
 
 **BODY**:
 
-        {
-        	"name":"Lisa",
-        	"surname":"Master",
-        	"email":"no@mail.me",
-        	"birthday":"2009-01-03"
-        }
+       {
+       	"email": "no@mail.me",
+       	"message": "My message"
+       }
 
-### To list customers:
+### To list contact form request:
 
 **Method**: GET
 
 **URL**: `http://localhost:81/v1/customers`
-
-
-### To list one customer:
-
-**Method**: GET
-
-**URL**: `http://localhost:81/v1/customers/1`
-
-### To change a customer:
-
-**Method**: PUT
-
-**URL**: `http://localhost:81/v1/customers/1`
-
-**BODY**:
-
-        {
-        	"name":"New Value",
-        	"surname":"New Value",
-        	"email":"no@mail.me",
-        	"birthday":"2009-01-03"
-        }
-
-### To delete a customer:
-
-**Method**: DELETE
-
-**URL**: `http://localhost:81/v1/customers/1`
 
 ### To read docs:
 
 **Method**: GET
 
-**URL**: `http://localhost:81/v1/docs`
+**URL**: `http://localhost:81/v1/doc`
+
+## Commands
+
+### To list all commands
+
+    bash start.sh cmd
+
+### To import csv with the list of contact requests
+
+    bash start.sh cmd app:import:contact-requests importExample.csv
