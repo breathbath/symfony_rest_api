@@ -115,6 +115,9 @@
             "config/packages/prod/jms_serializer.yaml"
         ]
     },
+    "mikey179/vfsstream": {
+        "version": "v1.6.6"
+    },
     "nelmio/api-doc-bundle": {
         "version": "3.0",
         "recipe": {

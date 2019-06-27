@@ -1,29 +1,32 @@
 <?php
 
-namespace App\Tests\Controller;
+namespace App\Tests\Helpers;
 
 use Doctrine\Common\DataFixtures\Purger\ORMPurger;
 use Doctrine\ORM\EntityManager;
-use Symfony\Bundle\FrameworkBundle\Client;
 
 trait DbTestCase
 {
-    /**
-     * @var Client
-     */
-    protected static $client;
-
     public static function setUpBeforeClass()
     {
         parent::setUpBeforeClass();
-        static::bootKernel([]);
+
+        self::bootKernel([]);
 
         /** @var EntityManager $em */
-        $em = self::$container->get('doctrine')->getManager();
+        $em = static::$container->get('doctrine')->getManager();
         $purger = new ORMPurger();
         $purger->setEntityManager($em);
         $purger->purge();
+    }
 
-        self::$client = static::createClient([], ['HTTP_HOST' => 'apache']);
+    protected function tearDown()
+    {
+
+    }
+
+    public static function tearDownAfterClass()
+    {
+        static::ensureKernelShutdown();
     }
 }

@@ -28,9 +28,9 @@ tests() {
     ops=''
     while getopts fu option; do
         case "$option" in
-            f) ops='--group=functional'
+            f) ops='--group=integration'
             ;;
-            u) ops='--exclude-group=functional'
+            u) ops='--exclude-group=integration'
             ;;
         esac
     done

@@ -10,7 +10,6 @@ use Symfony\Component\Serializer\Encoder\CsvEncoder;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
 use Symfony\Component\Serializer\Serializer;
-use Symfony\Component\Validator\Constraints\ValidValidator;
 use Symfony\Component\Validator\ConstraintViolation;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
@@ -96,10 +95,9 @@ class ContactRequestFacade
         }
 
         $totalBytesCount = filesize($filePath);
-        $readBytesCount = 0;
 
         while (($row = fgetcsv($handle, 0, ",")) !== false) {
-            if (!isset($row[0]) && !isset($row[1])) {
+            if (count($row) < 2) {
                 continue;
             }
 

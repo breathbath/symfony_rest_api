@@ -9,7 +9,7 @@ class ImportCsvFile
     /**
      * @Assert\NotBlank()
      * @Assert\File(
-     *     mimeTypes = {"text/csv", "text/plain"},
+     *     mimeTypes = {"text/plain"},
      *     notFoundMessage = "File {{ file }} cannot be found"
      * )
      */

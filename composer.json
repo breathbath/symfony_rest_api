@@ -8,6 +8,7 @@
         "ext-json": "*",
         "friendsofsymfony/rest-bundle": "^2.5",
         "jms/serializer-bundle": "*",
+        "mikey179/vfsstream": "^1.6",
         "nelmio/api-doc-bundle": "^3.4",
         "sensio/framework-extra-bundle": "^5.2",
         "symfony/console": "*",
